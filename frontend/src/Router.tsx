@@ -11,12 +11,14 @@ function Router() {
     {
       path: "/",
       element: <NewsScreen />,
-      children: [
-        {
-          path: "news/:newsId",
-          element: <FormNews />,
-        },
-      ],
+    },
+    {
+      path: "news/:newsId",
+      element: <FormNews />,
+    },
+    {
+      path: "news/new",
+      element: <FormNews />,
     },
   ]);
 

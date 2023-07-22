@@ -3,6 +3,7 @@ import {create, readAll, readOne, update, deleteNews} from "../repository/NewsRe
 const insertNews = async (request, response) => {
 	try {
 		const newsData = request.body;
+		console.log('######',newsData)
 		if(await create(newsData)) {
 			response.status(201).send({
 				message: "Notícia cadastrada com sucesso!"
