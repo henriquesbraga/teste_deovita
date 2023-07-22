@@ -3,7 +3,7 @@ import Card from '../../components/Card';
 import './index.css'
 import CardType from '../../types/CardType';
 import { deleteNew, fetchNews } from '../../service/api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TopBar from '../../components/TopBar';
 
 const NewsScreen = () => {
@@ -37,8 +37,9 @@ const NewsScreen = () => {
   }
 
   return (
-    <div>
-      <TopBar title='Noticias' onClick={handleNewPublicationClick} isButtonVisible />
+    <>
+    <TopBar title='Noticias' buttonTitle='Nova publicação' onClick={handleNewPublicationClick} isButtonVisible />
+    <div className='cardsContainer'>
       {news.map((e) => (
         <Card 
           key={e.id}
@@ -51,6 +52,7 @@ const NewsScreen = () => {
         />
       ))}
     </div>
+    </>
   )
 
 }

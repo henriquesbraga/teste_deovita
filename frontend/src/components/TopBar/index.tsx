@@ -3,11 +3,12 @@ import './index.css'
 
 type TopBarProps = {
   title: string;
+  buttonTitle: string;
   isButtonVisible: boolean;
   onClick?: () => void;
 };
 
-const TopBar: React.FC<TopBarProps> = ({ title, isButtonVisible, onClick }) => {
+const TopBar: React.FC<TopBarProps> = ({ title, buttonTitle, isButtonVisible, onClick }) => {
   return (
     <div className="navbar">
       <div className="nav-left">
@@ -15,7 +16,7 @@ const TopBar: React.FC<TopBarProps> = ({ title, isButtonVisible, onClick }) => {
         
       </div>
       {isButtonVisible && <div className="nav-right">
-        <button onClick={() => {onClick!()}}>Nova publicação</button>
+        <button onClick={() => {onClick!()}}>{buttonTitle}</button>
       </div>}
     </div>
   );

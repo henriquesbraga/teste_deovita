@@ -4,8 +4,6 @@ import CardType from "../../types/CardType";
 import { fetchNew, fetchOneNews } from "../../service/api";
 import "./index.css";
 import TopBar from "../../components/TopBar";
-
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -51,20 +49,19 @@ const FormNews = () => {
     else {
       await fetchNew({id: news?.id, title: news?.title, body: news?.body});
       navigation(-1)
+      notifyError()
     }
 
-
-    
 
   }
 
   return (
     <>
     <ToastContainer position="bottom-right" theme="dark"/>
-      <TopBar title={newsId ? 'Edição' : 'Novo'} onClick={() => {}} isButtonVisible={false}/>
+      <TopBar title={newsId ? 'Edição' : 'Novo'} buttonTitle="Voltar" onClick={() => {navigation(-1)}} isButtonVisible={true}/>
       <div className="box">
           <input id="titleInput" type="text" defaultValue={news?.title} name='title' onChange={handleChangeInput} placeholder="Título" required />
-          <textarea id="bodyInput" name='body' onChange={handleChangeInput} value={news.body} placeholder="Corpo da matéria"></textarea>
+          <textarea id="bodyInput" name='body' onChange={handleChangeInput} value={news.body} placeholder="Corpo da matéria" required rows={10}></textarea>
           <button onClick={handleSave}>Salvar</button>
       </div>
     </>
