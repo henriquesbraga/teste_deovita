@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CardType from "../../types/CardType";
 import { fetchNew, fetchOneNews } from "../../service/api";
 import "./index.css";
@@ -14,7 +14,7 @@ type InputsEnum = 'title' | 'body';
 const FormNews = () => {
   const [news, setNews] = useState<CardType>({});
   const { newsId } = useParams<RouterNewsType>();
-
+  const navigation = useNavigate()
 
   useEffect(() => {
     if (newsId) {
@@ -38,6 +38,8 @@ const FormNews = () => {
 
   async function handleSave() {
     await fetchNew({id: news?.id, title: news?.title, body: news?.body});
+    navigation(-1)
+
   }
 
   return (
