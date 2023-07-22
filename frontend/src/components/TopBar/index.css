@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: 30px;
+}
+
+.navbar button {
+  background-color: green;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  align-self: end;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  padding-right: 10px;
+}
+
+.nav-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-right {
+  display: flex;
+  flex-direction: row;
+}

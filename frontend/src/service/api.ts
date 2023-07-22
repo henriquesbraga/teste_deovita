@@ -36,7 +36,8 @@ async function fetchNew({ id, title, body }: CardType): Promise<any> {
       
       console.log('putt', { title, body })
       return response.json()
-    }else{
+    }
+    else{
       const response = await fetch(`http://localhost:3000/create`, {
         method: 'POST',
         body: JSON.stringify({ title, body }),
@@ -53,8 +54,24 @@ async function fetchNew({ id, title, body }: CardType): Promise<any> {
   }
 }
 
+async function deleteNew(id: number) {
+  try {
+    if(id){
+      const response = await fetch(`http://localhost:3000/delete/${id}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+      })
+      return response.json()
+    }
+  }
+  catch (err) {
+    console.log("fetch err: ", err)
+    return err
+  }
+}
+
 
 
 export {
-  fetchNews, fetchOneNews, fetchNew
+  fetchNews, fetchOneNews, fetchNew, deleteNew
 }

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CardType from "../../types/CardType";
 import { fetchNew, fetchOneNews } from "../../service/api";
 import "./index.css";
+import TopBar from "../../components/TopBar";
 
 
 type RouterNewsType = {
@@ -40,15 +41,14 @@ const FormNews = () => {
   }
 
   return (
-    <div className="box">
-      {newsId ? 'Edição' : 'Novo'}
-        <input type="text" defaultValue={news?.title} name='title' onChange={handleChangeInput} />
-        <textarea name='body' onChange={handleChangeInput} value={news.body}></textarea>
-        <button onClick={handleSave}>Salvar</button>
-
-        <a href="#" className="excluir">X</a>
-
-    </div>
+    <>
+      <TopBar title={newsId ? 'Edição' : 'Novo'} onClick={() => {}} isButtonVisible={false}/>
+      <div className="box">
+          <input type="text" defaultValue={news?.title} name='title' onChange={handleChangeInput} />
+          <textarea name='body' onChange={handleChangeInput} value={news.body}></textarea>
+          <button onClick={handleSave}>Salvar</button>
+      </div>
+    </>
   )
 }
 

@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import './index.css'
 import CardType from '../../types/CardType';
-import { fetchNews } from '../../service/api';
+import { deleteNew, fetchNews } from '../../service/api';
 import { useNavigate } from 'react-router-dom';
+import TopBar from '../../components/TopBar';
 
 const NewsScreen = () => {
 
@@ -15,7 +16,8 @@ const NewsScreen = () => {
     setNews(response)
   }
 
-  function removeNews(id:number){
+  async function removeNews(id:number) {
+    await deleteNew(id);
     const newNews = [...news].filter((e) => e.id != id);
     setNews(newNews)
   }
@@ -30,13 +32,13 @@ const NewsScreen = () => {
     navigation(`news/${newsId}`)
   }
 
-
-
-
+  function handleNewPublicationClick() {
+    navigation('news/new')
+  }
 
   return (
-    <div >
-      <p>tela de noticias</p>
+    <div>
+      <TopBar title='Noticias' onClick={handleNewPublicationClick} isButtonVisible />
       {news.map((e) => (
         <Card 
           key={e.id}

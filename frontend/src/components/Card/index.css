@@ -4,6 +4,15 @@
   padding: 8px;
   margin: 4px 0px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContainer span{
+  flex: 1;
+  align-self: end;
+  margin: 8px 4px;
+  font-style: italic;
 }
 
 .excluir{
