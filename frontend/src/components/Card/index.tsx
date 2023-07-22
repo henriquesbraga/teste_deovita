@@ -19,7 +19,6 @@ const Card = ({id, title, body, updatedAt, onClick, removeNews}: CardIndex) => {
       <p>{body}</p>
       <span>Data da publicação: {formatDate(updatedAt?.toISOString())}</span>
       <button onClick={() => onClick(id)}>Editar</button>
-      <a href="#" onClick={()=>removeNews(id)} className="excluir">Deletar notícia</a>
     </div>
   );
 

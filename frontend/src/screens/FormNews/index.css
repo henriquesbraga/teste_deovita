@@ -12,3 +12,8 @@
   margin: 8px 4px;
 }
 
+.deleteButton {
+  margin-top: 8px;
+  background-color: red;
+}
+

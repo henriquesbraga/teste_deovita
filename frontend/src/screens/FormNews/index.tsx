@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardType from "../../types/CardType";
-import { fetchNew, fetchOneNews } from "../../service/api";
+import { deleteNew, fetchNew, fetchOneNews } from "../../service/api";
 import "./index.css";
 import TopBar from "../../components/TopBar";
 import { ToastContainer, toast } from 'react-toastify';
@@ -51,9 +51,14 @@ const FormNews = () => {
       navigation(-1)
       notifyError()
     }
-
-
   }
+
+  async function handleDelete() {
+    await deleteNew(news?.id)
+    navigation(-1)
+  }
+
+
 
   return (
     <>
@@ -63,6 +68,9 @@ const FormNews = () => {
           <input id="titleInput" type="text" defaultValue={news?.title} name='title' onChange={handleChangeInput} placeholder="Título" required />
           <textarea id="bodyInput" name='body' onChange={handleChangeInput} value={news.body} placeholder="Corpo da matéria" required rows={10}></textarea>
           <button onClick={handleSave}>Salvar</button>
+          {newsId &&
+            <button className="deleteButton" onClick={handleDelete}>Deletar</button>
+          }
       </div>
     </>
   )
