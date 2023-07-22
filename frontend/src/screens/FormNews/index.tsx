@@ -6,6 +6,9 @@ import "./index.css";
 import TopBar from "../../components/TopBar";
 
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 type RouterNewsType = {
   newsId: string;
 }
@@ -15,6 +18,8 @@ const FormNews = () => {
   const [news, setNews] = useState<CardType>({});
   const { newsId } = useParams<RouterNewsType>();
   const navigation = useNavigate()
+
+  const notifyError = () => toast("Preencha todos os campos!", { theme: "dark" });
 
   useEffect(() => {
     if (newsId) {
@@ -41,7 +46,7 @@ const FormNews = () => {
     const body = news?.body;
 
     if(title === undefined || body === undefined) {
-      alert("oijoij")
+      notifyError()
     }
     else {
       await fetchNew({id: news?.id, title: news?.title, body: news?.body});
@@ -55,6 +60,7 @@ const FormNews = () => {
 
   return (
     <>
+    <ToastContainer position="bottom-right" theme="dark"/>
       <TopBar title={newsId ? 'Edição' : 'Novo'} onClick={() => {}} isButtonVisible={false}/>
       <div className="box">
           <input id="titleInput" type="text" defaultValue={news?.title} name='title' onChange={handleChangeInput} placeholder="Título" required />
