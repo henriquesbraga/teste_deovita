@@ -37,8 +37,19 @@ const FormNews = () => {
 
 
   async function handleSave() {
-    await fetchNew({id: news?.id, title: news?.title, body: news?.body});
-    navigation(-1)
+    const title = news?.title;
+    const body = news?.body;
+
+    if(title === undefined || body === undefined) {
+      alert("oijoij")
+    }
+    else {
+      await fetchNew({id: news?.id, title: news?.title, body: news?.body});
+      navigation(-1)
+    }
+
+
+    
 
   }
 
@@ -46,8 +57,8 @@ const FormNews = () => {
     <>
       <TopBar title={newsId ? 'Edição' : 'Novo'} onClick={() => {}} isButtonVisible={false}/>
       <div className="box">
-          <input type="text" defaultValue={news?.title} name='title' onChange={handleChangeInput} />
-          <textarea name='body' onChange={handleChangeInput} value={news.body}></textarea>
+          <input id="titleInput" type="text" defaultValue={news?.title} name='title' onChange={handleChangeInput} placeholder="Título" required />
+          <textarea id="bodyInput" name='body' onChange={handleChangeInput} value={news.body} placeholder="Corpo da matéria"></textarea>
           <button onClick={handleSave}>Salvar</button>
       </div>
     </>
