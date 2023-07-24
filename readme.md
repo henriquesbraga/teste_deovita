@@ -1,5 +1,4 @@
 # Projeto de avaliação
-## _The Last Markdown Editor, Ever_
 
 Estea repositório contem o backend e o frontend para avaliação de teste.
 Foi escrito usando Javascript no backend e Typescript no frontend.
