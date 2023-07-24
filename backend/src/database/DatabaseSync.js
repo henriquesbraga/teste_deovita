@@ -2,7 +2,7 @@ import  Database  from './DatabaseConnection.js';
 
 
 const DatabaseSync = () => {
-  Database.sync({ force: true }) // Set force to true to drop and recreate tables on every restart
+  Database.sync({ force: false })
   .then(() => {
     console.log('Database and tables are synced.');
   })
